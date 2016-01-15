@@ -1,22 +1,25 @@
 # Dependencies
 _        = require 'lodash'
 Himesama = require 'himesama'
-{ el }   = Himesama
+{ DOM }   = Himesama
 
 # DOM
-div   = el 'div'
-input = el 'input'
+{ div, p, input } = DOM
 
 
-module.exports = Cell = (ci, ri, content, handle) ->
+module.exports = Cell = Himesama.createClass
 
-  className =  'cell'
-  className += ' filled' if content
+  handle: (event) ->
+    { handle, ci, ri } = @attributes
+    handle event.target.value, ci, ri
 
-  input
-    className:      className
-    eventListeners:
-      input:        handle
-    col:            ci
-    row:            ri
-    value:          content
+  render: ->
+    { content } = @attributes
+
+    className =  'cell'
+    className += ' filled' if content
+
+    input
+      className:      className
+      event:          input: @handle
+      value:          content

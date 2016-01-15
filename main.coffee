@@ -1,9 +1,7 @@
 electron      = require 'electron'
-# console.log el
 app           = electron.app
 BrowserWindow = electron.BrowserWindow
 
-# electron.crashReporter.start()
 
 mainWindow = undefined
 

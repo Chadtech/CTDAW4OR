@@ -1,28 +1,23 @@
 # Libraries
-Himesama                 = require 'himesama'
-{ el, Doc, Render }      = Himesama
-{ Component, initState } = Himesama
-Render                   = Himesama.getRender()
-{ getElementById }       = Doc
+Himesama             = require 'himesama'
+{ DOM, Doc, Render } = Himesama
+{ initState }        = Himesama
+{ getElementById }   = Doc
 
 # DOM
-p   = el 'p'
-div = el 'div'
+{ div } = DOM
 
 # State
-Himesama.initState 
-  sheet: (require './blank-sheet')()
+initState sheet: (require './blank-sheet')()
 
 # Components
 Main = require './main'
 
-App = Himesama.Component
+App = Himesama.createClass
 
   render: ->
-    div null,
-      Main
+    div null, Main()
 
 
-
-Render App, getElementById 'mount'
+Render App(), getElementById 'mount'
 

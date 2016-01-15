@@ -1,11 +1,9 @@
 # Dependencies
 Himesama = require 'Himesama'
-{ el }   = Himesama
+{ DOM }   = Himesama
 
 # DOM
-p     = el 'p'
-div   = el 'div'
-input = el 'input'
+{ div, p, input } = DOM
 
 row = -> 
   arguments[0] = className: 'row'

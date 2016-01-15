@@ -1,30 +1,25 @@
 # Dependencies
 _        = require 'lodash'
 Himesama = require 'himesama'
-{ el }   = Himesama
+{ DOM }   = Himesama
 
 # DOM
-p     = el 'p'
-div   = el 'div'
-input = el 'input'
-
+{ div, p, input } = DOM
 { row, column } = require './ct-dom'
 
 # Components
 DropDown  = require './drop-down'
+DropRight = require './drop-right'
 Cell      = require './cell'
 
 
-module.exports = Tracker = -> Himesama.Component
+module.exports = Tracker = Himesama.createClass
 
   needs: [ 'sheet' ]
 
-  handleCell: (event) -> 
-    ci = event.target.getAttribute 'col'
-    ri = event.target.getAttribute 'row'
-    @state.sheet[ ri ][ ci ] = event.target.value
+  handleCell: (value, ci, ri) -> 
+    @state.sheet[ ri ][ ci ] = value
     @setState sheet: @state.sheet
-
 
   render: ->
 
@@ -35,11 +30,12 @@ module.exports = Tracker = -> Himesama.Component
             input
               className:        'nullButton'
               type:             'submit'
-              value:            'X'
+              value:            ''
 
           _.map @state.sheet[0], (c, ci) ->
             column null,
-              DropDown ci + ''
+              DropDown 
+                columnIndex: ci + ''
 
         _.map @state.sheet, (r, ri) =>
 
@@ -53,4 +49,8 @@ module.exports = Tracker = -> Himesama.Component
 
             _.map r, (c, ci) =>
               column null,
-                Cell ci, ri, c, @handleCell
+                Cell 
+                  ci:       ci
+                  ri:       ri
+                  content:  c
+                  handle:   @handleCell
