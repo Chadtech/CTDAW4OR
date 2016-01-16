@@ -8,7 +8,9 @@ Himesama             = require 'himesama'
 { div } = DOM
 
 # State
-initState sheet: (require './blank-sheet')()
+initState 
+  sheet:    (require './blank-sheet')()
+  dropdown: ''
 
 # Components
 Main = require './main'

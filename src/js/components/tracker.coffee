@@ -15,6 +15,8 @@ Cell      = require './cell'
 
 module.exports = Tracker = Himesama.createClass
 
+  aaname: 'Tracker!!!'
+
   needs: [ 'sheet' ]
 
   handleCell: (value, ci, ri) -> 
@@ -22,6 +24,7 @@ module.exports = Tracker = Himesama.createClass
     @setState sheet: @state.sheet
 
   render: ->
+    console.log 'Rendering tracker'
 
     div className:              'tracker',
       div className:            'container',
@@ -34,8 +37,7 @@ module.exports = Tracker = Himesama.createClass
 
           _.map @state.sheet[0], (c, ci) ->
             column null,
-              DropDown 
-                columnIndex: ci + ''
+              DropDown ci: ci
 
         _.map @state.sheet, (r, ri) =>
 
