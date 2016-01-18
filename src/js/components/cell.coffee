@@ -10,8 +10,10 @@ Himesama = require 'himesama'
 module.exports = Cell = Himesama.createClass
 
   handle: (event) ->
-    { handle, ci, ri } = @attributes
-    handle event.target.value, ci, ri
+    { ci, ri } = @attributes
+    v = event.target.value
+    @state.sheet[ri][ci] = v
+    @setState sheet: @state.sheet
 
   render: ->
     { content } = @attributes

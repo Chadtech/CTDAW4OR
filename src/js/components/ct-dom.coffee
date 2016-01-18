@@ -1,5 +1,5 @@
 # Dependencies
-Himesama = require 'Himesama'
+Himesama = require 'himesama'
 { DOM }   = Himesama
 
 # DOM

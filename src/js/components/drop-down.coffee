@@ -1,7 +1,7 @@
 # Dependencies
 _        = require 'lodash'
 Himesama = require 'himesama'
-{ DOM }   = Himesama
+{ DOM }  = Himesama
 
 # DOM
 { div, p, input } = DOM
@@ -9,22 +9,11 @@ Himesama = require 'himesama'
 
 module.exports = DropDown = Himesama.createClass
 
-  aaname:     'drop down!!!'
-
-  # needs:      [ 'dropdown' ]
-
-  isDropped:  'NOPE'
+  initAttributes: -> dropped: false
   
-  handle: ->
-    console.log 'DROPPED!!'
-    if @isDropped is 'YEEE'
-      @isDropped = 'NOPE'
-    else
-      @isDropped = 'YEEE'
-    @dirty = true
-    # @rerender ['dropdown']
-    # setTimeout (=> console.log @), 1000
-    # console.log 'At is', @
+  dropdown: -> @setAttr dropped: true
+  
+  close: -> @setAttr dropped: false
 
   removeColumn: ->
     { ci } = @attributes
@@ -32,33 +21,43 @@ module.exports = DropDown = Himesama.createClass
       @state.sheet[ri].splice ci, 1
     @setState sheet: @state.sheet
 
-  render: ->
+  addColumLeft: ->
     { ci } = @attributes
+    _.forEach @state.sheet, (r, ri) =>
+      @state.sheet[ri].splice ci, 0, ''
+    @setState sheet: @state.sheet   
 
-    console.log 'Gettin Rendered', @isDropped, @
+  addColumnRight: -> 
+    { ci } = @attributes
+    _.forEach @state.sheet, (r, ri) =>
+      @state.sheet[ri].splice ci + 1, 0, ''
+    @setState sheet: @state.sheet 
 
-    if @isDropped is 'YEEE'
-      div className: 'dropdown',
-        div className: 'list-down',
-          div className: 'list-down-Item zero',
+  render: ->
+    { ci, dropped } = @attributes
+
+    if dropped
+      div className:      'dropdown',
+        div className:    'list-down',
+          div className:  'list-down-Item zero',
             input
-              className: 'button'
-              type:      'submit'
-              event:     click: @handle
-              value:     'close'
+              className:  'button'
+              type:       'submit'
+              event:      click: @close
+              value:      'close'
 
           div className:  'list-down-Item one',
             input
-              className: 'button G'
-              type:      'submit'
-              event:     click: @handle
-              value:     '< add'
+              className:  'button G'
+              type:       'submit'
+              event:      click: @addColumLeft
+              value:      '< add'
 
           div className:  'list-down-Item two',
             input 
               className:  'button G'
               type:       'submit'
-              event:      click: @handle
+              event:      click: @addColumnRight
               value:      'add >'
 
           div className:  'list-down-Item three',
@@ -70,7 +69,7 @@ module.exports = DropDown = Himesama.createClass
     else
       div null,
         input
-          className:  'nullButton'
-          type:       'submit'
-          event:      click: @handle
-          value:      ci + ''
+          className:      'nullButton'
+          type:           'submit'
+          event:          click: @dropdown
+          value:          ci + ''

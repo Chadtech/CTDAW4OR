@@ -1,4 +1,5 @@
 # Libraries
+_                    = require 'lodash'
 Himesama             = require 'himesama'
 { DOM, Doc, Render } = Himesama
 { initState }        = Himesama
@@ -8,18 +9,15 @@ Himesama             = require 'himesama'
 { div } = DOM
 
 # State
-initState 
-  sheet:    (require './blank-sheet')()
-  dropdown: ''
+initState sheet: (require './blank-sheet')()
 
 # Components
 Main = require './main'
 
+
 App = Himesama.createClass
 
-  render: ->
-    div null, Main()
-
+  render: -> div null, Main()
 
 Render App(), getElementById 'mount'
 

@@ -1,11 +1,11 @@
 # Dependencies
 _        = require 'lodash'
 Himesama = require 'himesama'
-{ DOM }   = Himesama
+{ DOM }  = Himesama
 
 # DOM
 { div, p, input } = DOM
-{ row, column } = require './ct-dom'
+{ row, column }   = require './ct-dom'
 
 # Components
 DropDown  = require './drop-down'
@@ -15,8 +15,6 @@ Cell      = require './cell'
 
 module.exports = Tracker = Himesama.createClass
 
-  aaname: 'Tracker!!!'
-
   needs: [ 'sheet' ]
 
   handleCell: (value, ci, ri) -> 
@@ -24,7 +22,6 @@ module.exports = Tracker = Himesama.createClass
     @setState sheet: @state.sheet
 
   render: ->
-    console.log 'Rendering tracker'
 
     div className:              'tracker',
       div className:            'container',
