@@ -1,6 +1,6 @@
 # Libraries
 _                    = require 'lodash'
-Himesama             = require 'himesama'
+Himesama             = require './himesama'
 { DOM, Doc, Render } = Himesama
 { initState }        = Himesama
 { getElementById }   = Doc
@@ -17,7 +17,9 @@ Main = require './main'
 
 App = Himesama.createClass
 
-  render: -> div null, Main()
+  render: -> 
+    div null, 
+      Main null
 
 Render App(), getElementById 'mount'
 

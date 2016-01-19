@@ -1,6 +1,6 @@
 # Dependencies
-Himesama = require 'himesama'
-{ DOM }   = Himesama
+Himesama = require './himesama'
+{ DOM }  = Himesama
 
 # DOM
 { div, p } = DOM
@@ -12,5 +12,5 @@ module.exports = Main = Himesama.createClass
   render: ->
 
     div className: 'container',
-      Tracker()
-      Tracker()
+      Tracker null, [ 'sheet' ]
+      Tracker null, [ 'sheet' ]

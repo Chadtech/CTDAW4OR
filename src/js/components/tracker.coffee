@@ -1,6 +1,6 @@
 # Dependencies
 _        = require 'lodash'
-Himesama = require 'himesama'
+Himesama = require '../himesama'
 { DOM }  = Himesama
 
 # DOM
@@ -13,12 +13,11 @@ DropRight = require './drop-right'
 Cell      = require './cell'
 
 
+
 module.exports = Tracker = Himesama.createClass
 
-  needs: [ 'sheet' ]
-
   handleCell: (value, ci, ri) -> 
-    @state.sheet[ ri ][ ci ] = value
+    @state.sheet[ri][ci] = value
     @setState sheet: @state.sheet
 
   render: ->
@@ -40,10 +39,11 @@ module.exports = Tracker = Himesama.createClass
 
           row null,
             column null,
-              input
-                className:      'nullButton'
-                type:           'submit'
-                value:          ri + ''
+              DropRight ri: ri
+              # input
+              #   className:      'nullButton'
+              #   type:           'submit'
+              #   value:          ri + ''
 
 
             _.map r, (c, ci) =>
