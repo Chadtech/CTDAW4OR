@@ -5,6 +5,9 @@ Himesama = require '../himesama'
 # DOM
 { div, p, input } = DOM
 
+# Utilities
+{ indexFormatter } = require '../utilities'
+
 
 module.exports = DropRight = Himesama.createClass
 
@@ -40,8 +43,6 @@ module.exports = DropRight = Himesama.createClass
   render: ->
     { ri, dropped } = @attributes
 
-    console.log 'get Rend'
-
     if dropped
       div className:      'dropright',
         div className:    'list-right',
@@ -73,10 +74,13 @@ module.exports = DropRight = Himesama.createClass
               event:      click: @removeRow
               value:      'delete'
     else
+      radix = @state.rowRadix
+      index = indexFormatter ri, radix
+
       div null,
         input
           className:      'nullButton'
           type:           'submit'
           event:          click: @dropright
-          value:          ri + ''
+          value:          index
 

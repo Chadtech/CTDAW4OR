@@ -40,11 +40,6 @@ module.exports = Tracker = Himesama.createClass
           row null,
             column null,
               DropRight ri: ri
-              # input
-              #   className:      'nullButton'
-              #   type:           'submit'
-              #   value:          ri + ''
-
 
             _.map r, (c, ci) =>
               column null,

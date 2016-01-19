@@ -9,7 +9,9 @@ Himesama             = require './himesama'
 { div } = DOM
 
 # State
-initState sheet: (require './blank-sheet')()
+initState 
+  sheet:      (require './blank-sheet')()
+  rowRadix:   8
 
 # Components
 Main = require './main'

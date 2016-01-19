@@ -9,6 +9,8 @@ Himesama = require '../himesama'
 
 module.exports = DropDown = Himesama.createClass
 
+  needs: [ 'rowRadix' ]
+
   initAttributes: -> dropped: false
   
   dropdown: -> @setAttr dropped: true
