@@ -5,7 +5,8 @@ Himesama = require './himesama'
 # DOM
 { div, p } = DOM
 
-Tracker   = require './components/tracker'
+# Tracker   = require './components/tracker'
+TrackerView = require './components/tracker-view'
 HeaderBar = require './components/header-bar'
 
 module.exports = Main = Himesama.createClass
@@ -15,6 +16,9 @@ module.exports = Main = Himesama.createClass
 
       HeaderBar null
 
-      div className: 'container',
-        Tracker null
-        Tracker null
+      div className:      'container',
+
+        TrackerView()
+        TrackerView()
+        # Tracker null
+        # Tracker null

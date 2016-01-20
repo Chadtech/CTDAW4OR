@@ -17,8 +17,7 @@ module.exports = HeaderBar = Himesama.createClass
 
     div className: 'header-bar',
 
-      Open null
+      Open()
+      Save()
+      Radix()
 
-      Save null
-
-      Radix null

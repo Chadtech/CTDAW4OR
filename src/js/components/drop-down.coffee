@@ -17,19 +17,19 @@ module.exports = DropDown = Himesama.createClass
   
   close: -> @setAttr dropped: false
 
-  removeColumn: ->
+  removeColumn: =>
     { ci } = @attributes
     _.forEach @state.sheet, (r, ri) =>
       @state.sheet[ri].splice ci, 1
     @setState sheet: @state.sheet
 
-  addColumLeft: ->
+  addColumLeft: =>
     { ci } = @attributes
     _.forEach @state.sheet, (r, ri) =>
       @state.sheet[ri].splice ci, 0, ''
     @setState sheet: @state.sheet   
 
-  addColumnRight: -> 
+  addColumnRight: => 
     { ci } = @attributes
     _.forEach @state.sheet, (r, ri) =>
       @state.sheet[ri].splice ci + 1, 0, ''

@@ -12,8 +12,8 @@ module.exports = Cell = Himesama.createClass
   handle: (event) ->
     { ci, ri } = @attributes
     v = event.target.value
-    @state.sheet[ri][ci] = v
-    @setState sheet: @state.sheet
+    @state.sheets[0][ri][ci] = v
+    @setState sheets: @state.sheets
 
   render: ->
     { content } = @attributes

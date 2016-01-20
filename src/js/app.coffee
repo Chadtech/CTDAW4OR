@@ -5,13 +5,15 @@ Himesama             = require './himesama'
 { initState }        = Himesama
 { getElementById }   = Doc
 
+
 # DOM
 { div } = DOM
 
 # State
 initState 
-  sheet:      (require './blank-sheet')()
-  rowRadix:   8
+  sheets:      [ (require './blank-sheet')() ]
+  sheetNames:  ['Sheet 0 : $$$', 'US States', 'Yeeeee', ';;;;;;;;--===/H', 'Numbers???']
+  rowRadix:    8
 
 # Components
 Main = require './main'

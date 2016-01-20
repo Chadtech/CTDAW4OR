@@ -15,37 +15,32 @@ Cell      = require './cell'
 
 module.exports = Tracker = Himesama.createClass
 
-  needs: [ 'sheet',  'rowRadix' ]
-
-  handleCell: (value, ci, ri) -> 
-    @state.sheet[ri][ci] = value
-    @setState sheet: @state.sheet
+  needs: [ 'sheets',  'rowRadix' ]
 
   render: ->
 
-    div className:              'tracker',
-      div className:            'container',
-        row null, 
+    div className:            'container',
+      row null, 
+        column null,
+          input
+            className:        'nullButton'
+            type:             'submit'
+            value:            ''
+
+        _.map (@state.sheets[0].slice 0, 11), (c, ci) ->
           column null,
-            input
-              className:        'nullButton'
-              type:             'submit'
-              value:            ''
+            DropDown ci: ci
 
-          _.map @state.sheet[0], (c, ci) ->
+      _.map (@state.sheets[0].slice 0 , 37), (r, ri) =>
+
+        row null,
+          column null,
+            DropRight ri: ri
+
+          _.map (r.slice 0, 11), (c, ci) =>
             column null,
-              DropDown ci: ci
+              Cell 
+                ci:       ci
+                ri:       ri
+                content:  c
 
-        _.map @state.sheet, (r, ri) =>
-
-          row null,
-            column null,
-              DropRight ri: ri
-
-            _.map r, (c, ci) =>
-              column null,
-                Cell 
-                  ci:       ci
-                  ri:       ri
-                  content:  c
-                  handle:   @handleCell
