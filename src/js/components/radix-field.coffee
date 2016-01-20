@@ -13,7 +13,7 @@ module.exports = Radix = Himesama.createClass
 
   handle: (event) ->
     rowRadix = parseInt event.target.value
-    if rowRadix > 0
+    if rowRadix > 1
       @setState rowRadix: rowRadix
 
   render: ->
