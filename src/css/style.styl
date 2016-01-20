@@ -9,11 +9,16 @@ cellHeight      = 13px
 pointColor      = #c6b988
 unimportantText = #969d66
 
-importantText   = #dd3656
-importantTextG  = #78dd36
-importantTextD  = #ad366c
+// importantText   = #dd3656
+// importantTextG  = #78dd36
+// importantTextD  = #ad366c
+
+importantText   = #dd445d
+importantTextG  = #74bd52
+// importantTextD  = #9a4e53
 
 ignorable       = #445244
+lessIgnorable   = #4d4b3d
 backgroundColor = #040a0e
 totalBlack      = #060a00
 trackerBorder   = #1a2129
@@ -148,6 +153,27 @@ buttonContent()
   position                absolute
   margin                  0
 
+.option-button
+  background-color lessIgnorable
+  color            #180433
+  border-style            solid
+  border-width            1px
+  border-color            trackerBorder
+  font-family             HFNSS
+  // color                   totalBlack
+  font-size               standardSize
+  font-smooth             never
+  webkit-font-smoothing   none
+  -webkit-font-smoothing  none
+  outline                 none
+  width                   54px
+  height                  13px
+  // top                     0
+  // left                    0
+  float left
+  margin                  0
+  margin-left             1px
+
 
 .button
   buttonContent()
@@ -225,6 +251,23 @@ cellContent()
   border-color            trackerBorder
 
 
+.field
+  float                   left
+  margin                  0
+  margin-left             1px
+  background-color        totalBlack
+  border-style            solid
+  border-width            1px
+  border-color            trackerBorder
+  font-family             HFNSS
+  color                   pointColor
+  font-size               standardSize
+  font-smooth             never
+  webkit-font-smoothing   none
+  -webkit-font-smoothing  none
+  outline                 none
+  width                   (cellWidth * 2) + 1
+
 .cell
   cellContent()
   &:hover
@@ -240,8 +283,14 @@ cellContent()
   color             totalBlack
   
 
-
-.TestDiv
-  margin-top  90px
-  margin-left 20px
+.header-bar
+  position                relative
+  margin                  7px
+  margin-bottom           0px
+  width                   1420px
+  height                  cellHeight
+  background-color        totalBlack
+  border-style            solid
+  border-width            1px
+  border-color            trackerBorder
 

@@ -13,8 +13,9 @@ DropRight = require './drop-right'
 Cell      = require './cell'
 
 
-
 module.exports = Tracker = Himesama.createClass
+
+  needs: [ 'sheet',  'rowRadix' ]
 
   handleCell: (value, ci, ri) -> 
     @state.sheet[ri][ci] = value

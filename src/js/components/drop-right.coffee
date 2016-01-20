@@ -77,10 +77,10 @@ module.exports = DropRight = Himesama.createClass
       radix = @state.rowRadix
       index = indexFormatter ri, radix
 
-      div null,
-        input
-          className:      'nullButton'
-          type:           'submit'
-          event:          click: @dropright
-          value:          index
+      # div null,
+      input
+        className:      'nullButton'
+        type:           'submit'
+        event:          click: @dropright
+        value:          index
 
