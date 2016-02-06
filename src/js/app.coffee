@@ -1,17 +1,16 @@
-# Libraries
-_                    = require 'lodash'
-Himesama             = require './himesama'
-{ DOM, Doc, Render } = Himesama
-{ initState }        = Himesama
-{ getElementById }   = Doc
-
+# Dependencies
+_             = require 'lodash'
+Himesama      = require './himesama'
+{ Render }    = Himesama
+{ initState } = Himesama
+blankSheet    = (require './blank-sheet')()
 
 # DOM
-{ div } = DOM
+{ div } = Himesama.DOM
 
 # State
 initState 
-  sheets:      [ (require './blank-sheet')() ]
+  sheets:      [ blankSheet ]
   sheetNames:  ['Sheet 0 : $$$', 'US States', 'Yeeeee', ';;;;;;;;--===/H', 'Numbers???']
   rowRadix:    8
 
@@ -25,5 +24,5 @@ App = Himesama.createClass
     div null, 
       Main null
 
-Render App(), getElementById 'mount'
+Render App(), document.getElementById 'mount'
 

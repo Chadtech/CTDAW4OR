@@ -18,27 +18,27 @@ module.exports = DropRight = Himesama.createClass
   close: -> @setAttr dropped: false
 
   removeRow: ->
-    { ri } = @attributes
-    @state.sheet.splice ri, 1
-    @setState sheet: @state.sheet
+    {ri} = @attributes
+    s    = @state.sheets
+    s[0].splice ri, 1
+    @setState sheets: s
+
+  newRow: (where) ->
+    {ri} = @attributes
+    s    = @state.sheets
+    nr   = []
+    l    = s[0].length
+    _.times l, (i) => nr.push 0
+    s[0].splice where, 0, nr
+    @setState sheets: s
 
   addRowAbove: ->
-    { ri } = @attributes
-    sheet = @state.sheet
-    newRow = _.reduce [ 0 .. sheet[0].length ],
-      (sum) -> sum.push 0
-      [] 
-    sheet.splice ri, 0, newRow
-    @setState sheet: sheet
+    {ri} = @attributes
+    @newRow ri
 
   addRowBelow: ->
-    { ri } = @attributes
-    sheet = @state.sheet
-    newRow = _.reduce [ 0 .. sheet[0].length ],
-      (sum) -> sum.push 0
-      [] 
-    sheet.splice ri + 1, 0, newRow
-    @setState sheet: sheet
+    {ri} = @attributes
+    @newRow ri + 1
 
   render: ->
     { ri, dropped } = @attributes
@@ -77,7 +77,6 @@ module.exports = DropRight = Himesama.createClass
       radix = @state.rowRadix
       index = indexFormatter ri, radix
 
-      # div null,
       input
         className:      'nullButton'
         type:           'submit'

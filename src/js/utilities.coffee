@@ -1,4 +1,4 @@
-module.exports = 
+module.exports = Utilities = 
 
   indexFormatter: (i, radix) ->
     ending = (i % radix).toString radix

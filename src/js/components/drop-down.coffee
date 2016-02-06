@@ -1,10 +1,9 @@
 # Dependencies
 _        = require 'lodash'
 Himesama = require '../himesama'
-{ DOM }  = Himesama
 
 # DOM
-{ div, p, input } = DOM
+{ div, p, input } = Himesama.DOM
 
 
 module.exports = DropDown = Himesama.createClass
@@ -18,22 +17,25 @@ module.exports = DropDown = Himesama.createClass
   close: -> @setAttr dropped: false
 
   removeColumn: =>
-    { ci } = @attributes
-    _.forEach @state.sheet, (r, ri) =>
-      @state.sheet[ri].splice ci, 1
-    @setState sheet: @state.sheet
+    { ci }    = @attributes
+    { sheet } = @state
+    _.forEach sheet, (r, ri) =>
+      sheet[ri].splice ci, 1
+    @setState sheet: sheet
 
   addColumLeft: =>
-    { ci } = @attributes
-    _.forEach @state.sheet, (r, ri) =>
-      @state.sheet[ri].splice ci, 0, ''
-    @setState sheet: @state.sheet   
+    { ci }    = @attributes
+    { sheet } = @state
+    _.forEach sheet, (r, ri) =>
+      sheet[ri].splice ci, 0, ''
+    @setState sheet: sheet  
 
   addColumnRight: => 
-    { ci } = @attributes
-    _.forEach @state.sheet, (r, ri) =>
-      @state.sheet[ri].splice ci + 1, 0, ''
-    @setState sheet: @state.sheet 
+    { ci }    = @attributes
+    { sheet } = @state
+    _.forEach sheet, (r, ri) =>
+      sheet[ri].splice ci + 1, 0, ''
+    @setState sheet: sheet 
 
   render: ->
     { ci, dropped } = @attributes

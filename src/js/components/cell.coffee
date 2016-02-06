@@ -1,19 +1,19 @@
 # Dependencies
 _        = require 'lodash'
 Himesama = require '../himesama'
-{ DOM }   = Himesama
 
 # DOM
-{ div, p, input } = DOM
+{ div, p, input } = Himesama.DOM
 
 
 module.exports = Cell = Himesama.createClass
 
   handle: (event) ->
     { ci, ri } = @attributes
+    { sheets } = @state
     v = event.target.value
-    @state.sheets[0][ri][ci] = v
-    @setState sheets: @state.sheets
+    sheets[0][ri][ci] = v
+    @setState sheets: sheets
 
   render: ->
     { content } = @attributes
@@ -22,6 +22,6 @@ module.exports = Cell = Himesama.createClass
     className += ' filled' if content
 
     input
-      className:      className
-      event:          input: @handle
-      value:          content
+      className: className
+      event:     input: @handle
+      value:     content

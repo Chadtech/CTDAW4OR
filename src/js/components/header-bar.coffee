@@ -1,15 +1,15 @@
 # Dependencies
 Himesama = require '../himesama'
 _        = require 'lodash'
-{ DOM }  = Himesama
 
 # DOM
-{ div, input } = DOM
+{ div, input } = Himesama.DOM
 
 # Components
 Open  = require './open-button'
 Save  = require './save-button'
 Radix = require './radix-field'
+
 
 module.exports = HeaderBar = Himesama.createClass
 

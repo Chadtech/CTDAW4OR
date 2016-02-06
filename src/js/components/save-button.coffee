@@ -1,7 +1,6 @@
 # Dependencies
 Himesama = require '../himesama'
 _        = require 'lodash'
-{ DOM }  = Himesama
 remote   = get 'remote'
 fs       = get 'fs'
 dialog   = remote.require 'dialog'
@@ -10,7 +9,7 @@ dialog   = remote.require 'dialog'
 { isCSV, getDir } = require '../utilities'
 
 # DOM
-{ div, input } = DOM
+{ div, input } = Himesama.DOM
 
 
 module.exports = Open = Himesama.createClass

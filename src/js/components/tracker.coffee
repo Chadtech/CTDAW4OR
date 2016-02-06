@@ -1,10 +1,9 @@
 # Dependencies
 _        = require 'lodash'
 Himesama = require '../himesama'
-{ DOM }  = Himesama
 
 # DOM
-{ div, p, input } = DOM
+{ div, p, input } = Himesama.DOM
 { row, column }   = require './ct-dom'
 
 # Components
@@ -18,6 +17,31 @@ module.exports = Tracker = Himesama.createClass
   needs: [ 'sheets',  'rowRadix' ]
 
   render: ->
+    {sheets} = @state
+    s        = sheets[0]
+
+    columns = s.slice 0, 11
+    columns = _.map columns, 
+      (c, ci) ->
+        column null,
+          DropDown ci: ci
+
+    rows = s.slice 0, 37
+    rows = _.map rows, (r, ri) =>
+
+      cells = r.slice 0, 11
+      cells = _.map cells, (c, ci) =>
+        column null,
+          Cell 
+            ci:      ci
+            ri:      ri
+            content: c
+
+      row null,
+        column null,
+          DropRight ri: ri
+        cells
+
 
     div className:            'container',
       row null, 
@@ -27,20 +51,7 @@ module.exports = Tracker = Himesama.createClass
             type:             'submit'
             value:            ''
 
-        _.map (@state.sheets[0].slice 0, 11), (c, ci) ->
-          column null,
-            DropDown ci: ci
+        columns
 
-      _.map (@state.sheets[0].slice 0 , 37), (r, ri) =>
-
-        row null,
-          column null,
-            DropRight ri: ri
-
-          _.map (r.slice 0, 11), (c, ci) =>
-            column null,
-              Cell 
-                ci:       ci
-                ri:       ri
-                content:  c
+      rows
 

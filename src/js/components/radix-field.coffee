@@ -1,10 +1,9 @@
 # Dependencies
 Himesama = require '../himesama'
 _        = require 'lodash'
-{ DOM }  = Himesama
 
 # DOM
-{ div, input } = DOM
+{ div, input } = Himesama.DOM
 
 
 module.exports = Radix = Himesama.createClass
