@@ -20,8 +20,8 @@ importantTextG  = #74bd52
 importantTextD  = #9a4e53
 
 sheetOptionColor    = #425c52
-selectedSheetOption = #44626a
-leftOrRightColor    = #4e443d
+selectedSheetOption = #446261
+leftOrRightColor    = #40473d
 
 ignorable       = #465244
 lessIgnorable   = #4d4b3d
@@ -179,7 +179,9 @@ buttonContent()
   // left                    0
   float left
   margin                  0
-  margin-left             1px
+  // margin-left             -1px
+  margin-right            1px
+  // margin-bottom           1px
 
 
 .button
@@ -290,8 +292,8 @@ cellContent()
   color             totalBlack
   
 .sheet-option
-  background-color sheetOptionColor
-  color            #180433
+  background-color        sheetOptionColor
+  color                   #180433
   border-style            solid
   border-width            1px
   border-color            trackerBorder
@@ -305,12 +307,12 @@ cellContent()
   height                  13px
   float left
   margin                  0
-  margin-right             1px
+  margin-right            1px
   
 .selected-sheet-option
-  background-color selectedSheetOption
-  color            #180433
-  margin-right             1px
+  background-color        selectedSheetOption
+  color                   #180433
+  margin-right            1px
 
   border-style            solid
   border-width            1px
@@ -325,7 +327,7 @@ cellContent()
   height                  13px
   float left
   margin                  0
-  margin-right             1px
+  margin-right            1px
 
   
 
@@ -338,8 +340,8 @@ cellContent()
   margin-bottom           1px
 
 .left-or-right-sheet
-  background-color leftOrRightColor
-  color            #180433
+  background-color        leftOrRightColor
+  color                   #180433
   border-style            solid
   border-width            1px
   border-color            trackerBorder
@@ -362,7 +364,7 @@ cellContent()
 .header-bar
   position                relative
   // margin                  7px
-  // margin-bottom           0px
+  margin-bottom           1px
   width                   1420px
   height                  cellHeight
   // margin-left             -1px

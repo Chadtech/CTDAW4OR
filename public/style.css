@@ -122,7 +122,7 @@ body {
   height: 13px;
   float: left;
   margin: 0;
-  margin-left: 1px;
+  margin-right: 1px;
 }
 .button {
   background-color: #dd445d;
@@ -296,7 +296,7 @@ body {
   margin-right: 1px;
 }
 .selected-sheet-option {
-  background-color: #44626a;
+  background-color: #446261;
   color: #180433;
   margin-right: 1px;
   border-style: solid;
@@ -322,7 +322,7 @@ body {
   margin-bottom: 1px;
 }
 .left-or-right-sheet {
-  background-color: #4e443d;
+  background-color: #40473d;
   color: #180433;
   border-style: solid;
   border-width: 1px;
@@ -341,6 +341,7 @@ body {
 }
 .header-bar {
   position: relative;
+  margin-bottom: 1px;
   width: 1420px;
   height: 13px;
 }
