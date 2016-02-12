@@ -48,10 +48,8 @@ module.exports = Merge = (model, draft) ->
         replaceNode model, draft
         Render.textToNode model, draft
   else
-    # console.log 'A'
     draft = adoptId model, draft
     unless Diff.nodes model, draft
-      console.log 'A'
       Render.node model, draft
       model.type       = draft.type
       model.attributes = draft.attributes
@@ -81,13 +79,9 @@ mergeChildren = (model, draft) ->
   else
     _.times s - f, (si) =>
       dChild   = dChildren[ si + f ]
-
-      modelsId = model.attributes[hk]
-      childsId = modelsId + '.' + (si + f)
-      # console.log modelsId, '      ', childsId
-      # dChild.attributes[hk] = childsId 
-      allocateIds dChild, modelsId + '.' + (si + f)
-      # mChildren.push dChild
+      id       = model.attributes[hk]
+      childsId = id + '.' + (si + f)
+      allocateIds dChild, childsId
       Render.add model, dChild
 
 

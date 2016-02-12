@@ -8,46 +8,33 @@ Himesama = require '../himesama'
 
 module.exports = DropDown = Himesama.createClass
 
-  needs: [ 'rowRadix' ]
-
-  initAttributes: -> dropped: false
-  
-  dropdown: -> 
-    console.log 'DROP DOWN'
-    @setAttr dropped: true
-  
-  close: -> 
-    # console.log 'CLOSE', @
-    @setAttr dropped: false
+  initAttributes: ->          dropped: false
+  dropdown:       -> @setAttr dropped: true
+  close:          -> @setAttr dropped: false
 
   removeColumn: ->
-    { ci }    = @attributes
-    { sheets } = @state
-    console.log 'ci !!', ci
-    _.forEach sheets[0], (r, ri) =>
-      sheets[0][ri].splice ci, 1
-    @setState sheets: sheets
+    { ci }     = @attributes
+    s = @state.sheets
+    _.forEach s[0], (r, ri) =>
+      s[0][ri].splice ci, 1
+    @setState sheets: s
     @setAttr dropped: false
 
   newColumn: (where) ->
-    {ci} = @attributes
-    s    = @state.sheets
-    nc   = []
-    l    = s[0].length
+    s = @state.sheets
+    l = s[0][0].length
+    w = where
+    _.times l, (i) =>
+      s[0][i].splice w, 0, ''
+    @setState sheets: s
 
-  addColumLeft: =>
-    { ci }    = @attributes
-    { sheets } = @state
-    _.forEach sheets[0], (r, ri) =>
-      sheets[0][ri].splice ci, 0, ''
-    @setState sheets: sheets  
+  addColumLeft: ->
+    { ci } = @attributes
+    @newColumn ci
 
   addColumnRight: -> 
-    { ci }    = @attributes
-    { sheets } = @state
-    _.forEach sheets, (r, ri) =>
-      sheets[0][ri].splice ci + 1, 0, ''
-    @setState sheets: sheet s
+    { ci } = @attributes
+    @newColumn ci + 1
 
   render: ->
     { ci, dropped } = @attributes

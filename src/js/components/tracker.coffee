@@ -50,8 +50,6 @@ module.exports = Tracker = Himesama.createClass
             className:        'nullButton'
             type:             'submit'
             value:            ''
-
         columns
-
       rows
 

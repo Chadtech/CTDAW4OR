@@ -11,17 +11,16 @@ _        = require 'lodash'
 
 module.exports = DropRight = Himesama.createClass
 
-  initAttributes: -> dropped: false
-
-  dropright: -> @setAttr dropped: true
-
-  close: -> @setAttr dropped: false
+  initAttributes: ->          dropped: false
+  dropright:      -> @setAttr dropped: true
+  close:          -> @setAttr dropped: false
 
   removeRow: ->
     {ri} = @attributes
     s    = @state.sheets
     s[0].splice ri, 1
     @setState sheets: s
+    @setAttr dropped: false
 
   newRow: (where) ->
     {ri} = @attributes
