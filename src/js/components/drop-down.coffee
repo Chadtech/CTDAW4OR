@@ -12,30 +12,42 @@ module.exports = DropDown = Himesama.createClass
 
   initAttributes: -> dropped: false
   
-  dropdown: -> @setAttr dropped: true
+  dropdown: -> 
+    console.log 'DROP DOWN'
+    @setAttr dropped: true
   
-  close: -> @setAttr dropped: false
+  close: -> 
+    # console.log 'CLOSE', @
+    @setAttr dropped: false
 
-  removeColumn: =>
+  removeColumn: ->
     { ci }    = @attributes
-    { sheet } = @state
-    _.forEach sheet, (r, ri) =>
-      sheet[ri].splice ci, 1
-    @setState sheet: sheet
+    { sheets } = @state
+    console.log 'ci !!', ci
+    _.forEach sheets[0], (r, ri) =>
+      sheets[0][ri].splice ci, 1
+    @setState sheets: sheets
+    @setAttr dropped: false
+
+  newColumn: (where) ->
+    {ci} = @attributes
+    s    = @state.sheets
+    nc   = []
+    l    = s[0].length
 
   addColumLeft: =>
     { ci }    = @attributes
-    { sheet } = @state
-    _.forEach sheet, (r, ri) =>
-      sheet[ri].splice ci, 0, ''
-    @setState sheet: sheet  
+    { sheets } = @state
+    _.forEach sheets[0], (r, ri) =>
+      sheets[0][ri].splice ci, 0, ''
+    @setState sheets: sheets  
 
-  addColumnRight: => 
+  addColumnRight: -> 
     { ci }    = @attributes
-    { sheet } = @state
-    _.forEach sheet, (r, ri) =>
-      sheet[ri].splice ci + 1, 0, ''
-    @setState sheet: sheet 
+    { sheets } = @state
+    _.forEach sheets, (r, ri) =>
+      sheets[0][ri].splice ci + 1, 0, ''
+    @setState sheets: sheet s
 
   render: ->
     { ci, dropped } = @attributes

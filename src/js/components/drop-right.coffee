@@ -1,9 +1,9 @@
 # Dependencies
 Himesama = require '../himesama'
-{ DOM }   = Himesama
+_        = require 'lodash'
 
 # DOM
-{ div, p, input } = DOM
+{ div, p, input } = Himesama.DOM
 
 # Utilities
 { indexFormatter } = require '../utilities'
@@ -28,7 +28,7 @@ module.exports = DropRight = Himesama.createClass
     s    = @state.sheets
     nr   = []
     l    = s[0].length
-    _.times l, (i) => nr.push 0
+    _.times l, (i) => nr.push ''
     s[0].splice where, 0, nr
     @setState sheets: s
 
