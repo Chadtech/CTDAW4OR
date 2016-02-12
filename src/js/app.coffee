@@ -11,8 +11,10 @@ blankSheet    = (require './blank-sheet')()
 # State
 initState 
   sheets:      [ blankSheet ]
-  sheetNames:  ['Sheet 0 : $$$', 'US States', 'Yeeeee', ';;;;;;;;--===/H', 'Numbers???']
+  sheetNames:  [ 'blank-sheet' ]
   rowRadix:    8
+  lefti:       0
+  righti:      0
 
 # Components
 Main = require './main'

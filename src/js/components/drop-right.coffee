@@ -16,20 +16,24 @@ module.exports = DropRight = Himesama.createClass
   close:          -> @setAttr dropped: false
 
   removeRow: ->
-    {ri} = @attributes
-    s    = @state.sheets
-    s[0].splice ri, 1
-    @setState sheets: s
+    {ri, key} = @attributes
+    {sheets}  = @state
+    si        = @state[key]
+    sheets[si].splice ri, 1
+    @setState sheets: sheets
     @setAttr dropped: false
 
   newRow: (where) ->
-    {ri} = @attributes
-    s    = @state.sheets
-    nr   = []
-    l    = s[0].length
+    {key}    = @attributes
+    {sheets} = @state
+    si       = @state[key]
+    nr       = []
+    l        = s[0].length
+    w        = where
     _.times l, (i) => nr.push ''
-    s[0].splice where, 0, nr
-    @setState sheets: s
+    sheets[si].splice w, 0, nr
+    @setState sheets: sheets
+    @setAttr dropped: false
 
   addRowAbove: ->
     {ri} = @attributes

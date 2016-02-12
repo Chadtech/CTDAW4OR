@@ -12,11 +12,11 @@ HeaderBar   = require './components/header-bar'
 module.exports = Main = Himesama.createClass
 
   render: ->
+    { lefti, righti } = @state
+
     div null,
-
       HeaderBar null
+      div className: 'container',
 
-      div className:      'container',
-
-        TrackerView()
-        TrackerView()
+        TrackerView tn: 'lefti'
+        TrackerView tn: 'righti'

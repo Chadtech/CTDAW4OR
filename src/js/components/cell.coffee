@@ -9,16 +9,16 @@ Himesama = require '../himesama'
 module.exports = Cell = Himesama.createClass
 
   handle: (event) ->
-    { ci, ri } = @attributes
+    {ci,ri,si} = @attributes
     { sheets } = @state
     v = event.target.value
-    sheets[0][ri][ci] = v
+    sheets[si][ri][ci] = v
     @setState sheets: sheets
 
   render: ->
     { content } = @attributes
 
-    className =  'cell'
+    className  = 'cell'
     className += ' filled' if content
 
     input

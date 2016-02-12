@@ -11,6 +11,11 @@ dialog   = remote.require 'dialog'
 # DOM
 { div, input } = Himesama.DOM
 
+justFile = (fn) ->
+  i = fn.length - 1
+  i-- until fn[i] is '/'
+  fn.slice i + 1
+
 
 module.exports = Open = Himesama.createClass
 
@@ -33,7 +38,17 @@ module.exports = Open = Himesama.createClass
         csv = csv.split '\n'
         _.map csv, (col) -> col.split ','
 
-      @setState sheets: openedSheets
+      { sheets, sheetNames } = @state
+      sheets = sheets.concat openedSheets
+      fns = _.map fns, (fn) -> 
+        fn = fn.slice 0, fn.length - 4
+        fn = justFile fn
+
+      sheetNames = sheetNames.concat fns
+
+      @setState 
+        sheets:      sheets
+        sheetNames: sheetNames
 
 
   render: ->
