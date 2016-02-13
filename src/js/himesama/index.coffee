@@ -69,7 +69,8 @@ Himesama =
         H.attributes[k] = attributes[k]
 
       if needs?
-        if H.needs? then H.needs.concat needs
+        if H.needs? 
+          H.needs = H.needs.concat needs
         else H.needs = needs
 
       H.dirty    = false

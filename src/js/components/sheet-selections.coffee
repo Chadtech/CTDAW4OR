@@ -11,21 +11,20 @@ module.exports = Himesama.createClass
 
   needs: [ 'sheetNames' ]
 
-  initAttributes: ->
-    sheetIndex: 0
-
   setSheet: (event) ->
     { tn, key }  = @attributes
     payload = {}
     v = event.target
     v = v.getAttribute 'sheet-index'
     payload[ key ] = parseInt v
+    @setAttr sheetIndex: v
     @setState payload
 
 
   getClass: (i) ->
-    { sheetIndex } = @attributes
-    if i is sheetIndex 
+    { key } = @attributes
+    index = @state[key]
+    if i is index 
       'selected-sheet-option'
     else 'sheet-option'
 
