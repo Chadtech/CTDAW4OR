@@ -11,6 +11,8 @@ dialog   = remote.require 'dialog'
 # DOM
 { div, input } = Himesama.DOM
 
+makeCSV = (sheet) ->
+
 
 module.exports = Open = Himesama.createClass
 
@@ -23,22 +25,28 @@ module.exports = Open = Himesama.createClass
         'openDirectory'
       ]
 
-    dialog.showSaveDialog (fn) =>
-      return unless fn?
-      # fn = getDir fn
-      # _.map @state.
-      # console.log fn      
+    dialog.showSaveDialog (dir) =>
+      return unless dir?
 
-      # # fns is 'fileNames'
-      # return unless fns?
-      # fns = _.filter fns, (fn) -> isCSV fn
-      # openedSheets =  _.map fns, (fn) ->
-      #   csv = fs.readFileSync fn, 'utf-8'
-      #   csv = csv.split '\n'
-      #   _.map csv, (col) -> col.split ','
+      { sheets, sheetNames } = @state
+      sheets = _.map sheets, (sheet, i) ->
+        _.reduce sheet, 
+          (str, row) ->
+            row = _.reduce row, (r, c) ->
+              r + ',' + c
+            str + row + '\n'
+          ''
 
-      # @setState sheet: openedSheets[0]
-
+      _.forEach sheets, (sheet, i) ->
+        sheet = sheet.split ''
+        sheet.pop()
+        sheet = sheet.join ''
+        name  = dir
+        name += ' - '
+        name += sheetNames[i]
+        name += '.csv'
+        fs.writeFileSync name, sheet
+        
 
   render: ->
 
