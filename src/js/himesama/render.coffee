@@ -27,7 +27,6 @@ module.exports = Render =
     parent.replaceChild nEl, el
 
   nodeToText: (model, draft) ->
-    # console.log 'Node to text'
     id     = model.attributes[ hk ]
     el     = getByAttribute hk, id
     nEl    = HTMLify.Text draft.content
@@ -35,7 +34,6 @@ module.exports = Render =
     parent.replaceChild nEl, el
 
   textToNode: (model, draft) -> 
-    # console.log 'Text to node'
     parent = model.parent
     id     = parent.attributes[hk]
     parent = getByAttribute hk, id
@@ -44,11 +42,9 @@ module.exports = Render =
     parent.appendChild nEl
 
   text: (model, draft) ->
-    # console.log 'Text to text', 
     parent = model.parent
     id     = parent.attributes[hk]
     parent = getByAttribute hk, id
-
     parent.textContent = draft.content
 
   remove: (model, i) ->

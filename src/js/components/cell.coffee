@@ -8,8 +8,13 @@ Himesama = require '../himesama'
 
 module.exports = Cell = Himesama.createClass
 
+  # needs: [ 'sheets' ]
+
   handle: (event) ->
-    {ci,ri,si} = @attributes
+    {ci,ri,si,key} = @attributes
+    # console.log key, si
+    si = @state[key]
+    # console.log 'si now', si
     { sheets } = @state
     v = event.target.value
     sheets[si][ri][ci] = v

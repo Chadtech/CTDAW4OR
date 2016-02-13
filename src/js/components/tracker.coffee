@@ -41,6 +41,7 @@ module.exports = Tracker = Himesama.createClass
             si:      si
             ci:      ci
             ri:      ri
+            key:    key
             content: c
 
       row null,

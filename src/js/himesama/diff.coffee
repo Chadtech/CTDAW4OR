@@ -21,8 +21,6 @@ module.exports = Diff =
   nodes: (a, b) ->
     a = VDOMToString a
     b = VDOMToString b
-    # console.log a
-    # console.log b
     a is b
 
   strings: (a, b) ->
