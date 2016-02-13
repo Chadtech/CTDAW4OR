@@ -18,7 +18,7 @@ module.exports = Tracker = Himesama.createClass
 
   render: ->
     {sheets} = @state
-    key      = @attributes.key
+    {key}    = @attributes
     si       = @state[key]
     s        = sheets[si]
 
@@ -29,7 +29,6 @@ module.exports = Tracker = Himesama.createClass
           DropDown 
             key: key
             ci:  ci
-            si:  si
 
     rows = s.slice 0, 37
     rows = _.map rows, (r, ri) =>
@@ -38,10 +37,9 @@ module.exports = Tracker = Himesama.createClass
       cells = _.map cells, (c, ci) =>
         column null,
           Cell 
-            si:      si
             ci:      ci
             ri:      ri
-            key:    key
+            key:     key
             content: c
 
       row null,
@@ -49,7 +47,6 @@ module.exports = Tracker = Himesama.createClass
           DropRight 
             key: key
             ri:  ri
-            si:  si
         cells
 
 

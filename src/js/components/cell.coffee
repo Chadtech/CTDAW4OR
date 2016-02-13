@@ -6,12 +6,10 @@ Himesama = require '../himesama'
 { div, p, input } = Himesama.DOM
 
 
-module.exports = Cell = Himesama.createClass
-
-  # needs: [ 'sheets' ]
+module.exports = Himesama.createClass
 
   handle: (event) ->
-    {ci,ri,si,key} = @attributes
+    {ci,ri,key} = @attributes
     # console.log key, si
     si = @state[key]
     # console.log 'si now', si

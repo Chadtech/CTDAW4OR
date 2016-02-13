@@ -41,12 +41,10 @@ module.exports = Open = Himesama.createClass
         sheet = sheet.split ''
         sheet.pop()
         sheet = sheet.join ''
-        name  = dir
-        name += ' - '
-        name += sheetNames[i]
+        name  = sheetNames[i]
         name += '.csv'
         fs.writeFileSync name, sheet
-        
+
 
   render: ->
 
