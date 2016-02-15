@@ -29,23 +29,11 @@ module.exports = Himesama.createClass
     else 'sheet-option'
 
 
-  add: ->
-    {sheets, sheetNames} = @state
-    newSheet = (require '../blank-sheet')()
-    sheets.push newSheet   
-    i = 0
-    n = 'new-sheet '
-    i++ while (n + i) in sheetNames
-    sheetNames.push n + i
-    @setState
-      sheetNames: sheetNames
-      sheets:     sheets
-
   render: ->
     { sheetNames } = @state
 
-    sheetButtons = 
-      _.map sheetNames, (name, i) =>
+    sheetButtons = _.map sheetNames, 
+      (name, i) =>
         input
           className:  @getClass i
           sheetIndex: i
@@ -53,13 +41,6 @@ module.exports = Himesama.createClass
           event:      click: @setSheet
           value:      name
     
-    sheetButtons.push input
-      className: 'left-or-right-sheet add'
-      event:     click: @add
-      type:      'submit'
-      value:     'add'
-
-
 
     div className:    'sheet-selections',
 

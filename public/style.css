@@ -224,13 +224,13 @@ body {
   border-width: 1px;
   border-color: #1a2129;
   font-family: HFNSS;
-  color: #c6b988;
+  color: #866e48;
   font-size: 1em;
   font-smooth: never;
   webkit-font-smoothing: none;
   -webkit-font-smoothing: none;
   outline: none;
-  width: 101px;
+  width: 105px;
 }
 .cell {
   top: 0;
@@ -340,11 +340,26 @@ body {
   margin-right: 1px;
 }
 .left-or-right-sheet.add {
-  background-color: #48403d;
+  background-color: #484236;
+}
+.left-or-right-sheet.close {
+  background-color: #483934;
 }
 .header-bar {
   position: relative;
   margin-bottom: 1px;
   width: 1420px;
   height: 13px;
+}
+::-webkit-input-placeholder {
+  color: #866e48;
+}
+:-moz-placeholder {
+  color: #866e48;
+}
+::-moz-placeholder {
+  color: #866e48;
+}
+:-ms-input-placeholder {
+  color: #866e48;
 }

@@ -59,6 +59,7 @@ module.exports = Render =
       el.remove()
 
   add: (model, child) ->
+    # console.log 'addin', child
     if child.type is 'himesama-text'
       el.textContent = child.content
     else

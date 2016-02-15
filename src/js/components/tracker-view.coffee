@@ -9,6 +9,7 @@ Himesama = require '../himesama'
 # Components
 Tracker = require './tracker'
 Sheets  = require './sheet-selections'
+Options = require './sheet-options'
 
 
 module.exports = Himesama.createClass
@@ -23,5 +24,6 @@ module.exports = Himesama.createClass
     need        = [ tn ]
 
     div className: 'tracker',
+      Options payload
       Sheets  payload, need
       Tracker payload, need

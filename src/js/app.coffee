@@ -11,7 +11,7 @@ blankSheet    = (require './blank-sheet')()
 # State
 initState 
   sheets:      [ blankSheet ]
-  sheetNames:  [ 'blank-sheet' ]
+  sheetNames:  [ 'blank-sheet 0' ]
   rowRadix:    8
   lefti:       0
   righti:      0
@@ -23,7 +23,7 @@ Main = require './main'
 App = Himesama.createClass
 
   render: -> 
-    div null, 
+    div null,
       Main null
 
 Render App(), document.getElementById 'mount'

@@ -16,7 +16,7 @@ textAreas = [ 'text', 'textarea' ]
 
 DOMCreate = (type) ->
   ->
-    args = _.toArray arguments 
+    args    = _.toArray arguments 
     args[0] = {} unless args[0]?
 
     _.reduce (_.flatten args.slice 1),
@@ -26,8 +26,10 @@ DOMCreate = (type) ->
           child = 
             type:       'himesama-text'
             content:    child
-        if child.type is 'custom'
-          child = child.children[0]
+        # if child.type is 'custom'
+          # child.parent = vo
+          # child.index  = i
+          # child = child.children[0]
         child.parent = vo
         child.index  = i
         vo.children.push child
@@ -115,13 +117,13 @@ Himesama =
 
 
   rerender: (node) ->
-    { dirty, children } = node
-    if dirty?
-      node.dirty = false
-      draft = node.render()
-      draft.index  = node.index
-      draft.parent = node.parent
-      # console.log 'Rerendered draft', draft
+    { dirty, children, } = node
+    if dirty? and dirty
+      node.dirty   = false
+      draft        = node.render()
+      itsChild     = node.children[0]
+      draft.index  = itsChild.index
+      draft.parent = itsChild.parent
       @saveActiveText()
       Merge node, draft
       @loadActiveText()

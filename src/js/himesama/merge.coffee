@@ -53,6 +53,7 @@ module.exports = Merge = (model, draft) ->
       Render.node model, draft
       model.attributes = draft.attributes
       model.type       = draft.type
+      # console.log draft.parent
     mergeChildren model, draft
 
 
@@ -67,8 +68,10 @@ mergeChildren = (model, draft) ->
   _.times f, (fi) =>
     mChild = mChildren[ fi ]
     dChild = dChildren[ fi ]
+    dChild.parent = mChild.parent
     Merge mChild, dChild
 
+  # console.log mChildren, dChildren
   s  = max ml, dl
   if ml > dl
     _.times s - f, =>
@@ -78,8 +81,14 @@ mergeChildren = (model, draft) ->
   else
     _.times s - f, (si) =>
       dChild   = dChildren[ si + f ]
+      # console.log 
+      dChild.parent = model
+      dChild
       id       = model.attributes[hk]
       childsId = id + '.' + (si + f)
       allocateIds dChild, childsId
+      # console.log mChildren, dChildren
+      # console.log 'Adding', dChild
       Render.add model, dChild
-      mChildren.push dChild
+      # console.log dChild.parent, dChild
+      model.children.push dChild

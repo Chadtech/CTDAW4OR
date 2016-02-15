@@ -34,13 +34,14 @@ module.exports = Tracker = Himesama.createClass
     rows = _.map rows, (r, ri) =>
 
       cells = r.slice 0, 11
-      cells = _.map cells, (c, ci) =>
-        column null,
-          Cell 
-            ci:      ci
-            ri:      ri
-            key:     key
-            content: c
+      cells = _.map cells, 
+        (c, ci) =>
+          column null,
+            Cell 
+              ci:      ci
+              ri:      ri
+              key:     key
+              content: c
 
       row null,
         column null,
@@ -50,13 +51,13 @@ module.exports = Tracker = Himesama.createClass
         cells
 
 
-    div className:            'container',
-      row null, 
-        column null,
+    div className:      'container',
+      row               null, 
+        column          null,
           input
-            className:        'nullButton'
-            type:             'submit'
-            value:            ''
+            className:  'nullButton'
+            type:       'submit'
+            value:      ''
         columns
       rows
 
