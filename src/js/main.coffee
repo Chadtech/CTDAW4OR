@@ -14,13 +14,13 @@ module.exports = Main = Himesama.createClass
   render: ->
     { lefti, righti } = @state
 
-    div 
-      style:
-        margin: '0 auto'
-        width:  '50%'
-        height: '100%' 
+    div null,
+      # style:
+      #   margin: '0 auto'
+      #   width:  '50%'
+      #   height: '100%' 
       HeaderBar null
       div className: 'container',
 
         TrackerView tn: 'lefti'
-        # TrackerView tn: 'righti'
+        TrackerView tn: 'righti'

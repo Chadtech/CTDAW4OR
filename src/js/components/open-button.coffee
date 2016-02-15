@@ -19,7 +19,6 @@ justFile = (fn) ->
 
 module.exports = Open = Himesama.createClass
 
-
   handle: ->
     options = 
       properties: [
@@ -49,7 +48,6 @@ module.exports = Open = Himesama.createClass
       @setState 
         sheets:      sheets
         sheetNames: sheetNames
-
 
   render: ->
 

@@ -342,6 +342,12 @@ body {
 .left-or-right-sheet.add {
   background-color: #484236;
 }
+.left-or-right-sheet.open {
+  background-color: #484f36;
+}
+.left-or-right-sheet.save {
+  background-color: #3c4f36;
+}
 .left-or-right-sheet.close {
   background-color: #483934;
 }

@@ -49,13 +49,12 @@ module.exports = Himesama.createClass
         type:         'submit'
         value:        '<<'
 
-      sheetButtons
-
       input
         className:    'left-or-right-sheet'
-        style:        float: 'right'
         type:         'submit'
         value:        '>>'  
+
+      sheetButtons
 
    
 

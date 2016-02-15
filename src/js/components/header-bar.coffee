@@ -3,7 +3,7 @@ Himesama = require '../himesama'
 _        = require 'lodash'
 
 # DOM
-{ div, input } = Himesama.DOM
+{ div, p, input } = Himesama.DOM
 
 # Components
 Open  = require './open-button'
@@ -17,7 +17,7 @@ module.exports = HeaderBar = Himesama.createClass
 
     div className: 'header-bar',
 
-      Open()
-      Save()
+      # Open()
+      # Save()
       Radix()
 

@@ -81,8 +81,8 @@ module.exports = DropRight = Himesama.createClass
       index = indexFormatter ri, radix
 
       input
-        className:      'nullButton'
-        type:           'submit'
-        event:          click: @dropright
-        value:          index
+        className:        'nullButton'
+        type:             'submit'
+        event:            click: @dropright
+        value:            index
 

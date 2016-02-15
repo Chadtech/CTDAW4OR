@@ -11,8 +11,6 @@ dialog   = remote.require 'dialog'
 # DOM
 { div, input } = Himesama.DOM
 
-makeCSV = (sheet) ->
-
 
 module.exports = Open = Himesama.createClass
 
