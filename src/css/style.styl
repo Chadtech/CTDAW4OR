@@ -16,9 +16,18 @@ unimportantText = #969d66
 // importantTextG  = #78dd36
 // importantTextD  = #ad366c
 
-importantText   = #dd445d
-importantTextG  = #74bd52
-importantTextD  = #9a4e53
+// importantText   = #dd445d
+// importantTextG  = #74bd52
+
+importantText   = #836045
+importantTextG  = #61833e
+
+importantTextHover   = #b76860
+importantTextGHover  = #91ae58
+
+
+
+// importantTextD  = #9a4e53
 
 sheetOptionColor    = #425c52
 selectedSheetOption = #446961
@@ -36,8 +45,9 @@ red             = #f20723
 body
   background  backgroundColor
   // padding     7px
-  padding 7px
-  margin      0
+  padding        7px
+  padding-bottom 28px
+  margin         0
 
 
 .point
@@ -136,6 +146,8 @@ body
   position      relative
   width         cellWidth
   height        14px
+  &.wide
+    width 105px
   
 
 .content 
@@ -191,14 +203,14 @@ buttonContent()
 .button
   buttonContent()
   &:hover
-    background-color  pointColor
-    border-color      pointColor
+    background-color    pointColor
+    border-color        pointColor
 
   &.critical
-    background-color  red
+    background-color    red
   &.null
-    background-color  backgroundColor
-    color             trackerBorder
+    background-color    backgroundColor
+    color               trackerBorder
   &.G
     &:hover
       background-color  pointColor
@@ -215,7 +227,22 @@ buttonContent()
   buttonContent()
   background-color ignorable
   color            trackerBorder
-
+  &.wide
+    width               109px 
+    background-color    #425250 
+  &.delete
+    background-color    importantText
+    &.tiny
+      width             27px
+    &:hover
+      background-color  importantTextHover
+  &.add
+    &:hover
+      background-color  importantTextGHover
+    background-color    importantTextG
+    &.tiny
+      width             27px
+      margin-left       27px
   
 cellContent()
   top                     0
@@ -364,7 +391,7 @@ cellContent()
   // left                    0
   float left
   margin                  0
-  margin-right             1px
+  margin-right            1px
   // margin-right            1px
   &.add
     background-color      #484236
@@ -372,7 +399,6 @@ cellContent()
     background-color      #484f36
   &.save
     background-color      #3c4f36
-
   &.close
     background-color      #483934
 

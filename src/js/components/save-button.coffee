@@ -12,17 +12,10 @@ dialog   = remote.require 'dialog'
 { div, input } = Himesama.DOM
 
 
-module.exports = Open = Himesama.createClass
+module.exports = Save = Himesama.createClass
 
 
   handle: ->
-    options = 
-      properties: [
-        'multiSelections'
-        'openFile'
-        'openDirectory'
-      ]
-
     dialog.showSaveDialog (dir) =>
       return unless dir?
 

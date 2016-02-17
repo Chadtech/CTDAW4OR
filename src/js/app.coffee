@@ -15,6 +15,8 @@ initState
   rowRadix:    8
   lefti:       0
   righti:      0
+  xOffSet:     0
+  yOffSet:     0
 
 # Components
 Main = require './main'
@@ -26,5 +28,7 @@ App = Himesama.createClass
     div null,
       Main null
 
-Render App(), document.getElementById 'mount'
+
+mount = document.getElementById 'mount'
+Render App(), mount
 

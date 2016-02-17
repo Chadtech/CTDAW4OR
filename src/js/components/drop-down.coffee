@@ -8,6 +8,8 @@ Himesama = require '../himesama'
 
 module.exports = DropDown = Himesama.createClass
 
+  needs: ['sheets']
+
   initAttributes: ->          dropped: false
   dropdown:       -> @setAttr dropped: true
   close:          -> @setAttr dropped: false
@@ -30,7 +32,6 @@ module.exports = DropDown = Himesama.createClass
     w        = where
     _.times l, (i) =>
       s[i].splice w, 0, ''
-    sheets[si] = s
     @setState sheets: sheets
     @setAttr dropped: false
 

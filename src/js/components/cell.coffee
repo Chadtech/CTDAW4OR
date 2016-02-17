@@ -5,6 +5,10 @@ Himesama = require '../himesama'
 # DOM
 { div, p, input } = Himesama.DOM
 
+{ colB, rowB } = require '../boundaries'
+
+colB = 10
+rowB = 56
 
 module.exports = Himesama.createClass
 
@@ -17,18 +21,49 @@ module.exports = Himesama.createClass
     @setState sheets: sheets
 
   focusOn: (event) ->
-    {ci,ri} = @attributes
+    {ci,ri}     = @attributes
+    # console.log ci, ri
+    ci          = ci % colB
+    rj          = ri % rowB
+    {xOffSet} = @attributes
+    {yOffSet} = @attributes 
+    {setYOffSet} = @attributes
+
+
     switch event.which
       when 13
-        @focus ci + 1, ri + 2
+        if rj is rowB - 1
+          console.log 'F', setYOffSet
+          yOffSet++
+          setYOffSet yOffSet
+        else
+          @focus ci + 2, rj + 2
+      
       when 39
-        @focus ci + 2, ri + 1
+        if ci < colB
+          @focus ci + 3, rj + 1
+      
       when 40 
-        @focus ci + 1, ri + 2
+       if rj is rowB - 1
+          yOffSet++
+          setYOffSet yOffSet
+        else
+          @focus ci + 2, rj + 2
+      
       when 37
-        @focus ci, ri + 1
+        if 0 < ci
+          @focus ci + 1, rj + 1
+      
       when 38
-        @focus ci + 1, ri
+        if 0 < ri
+          if 0 < rj
+            yOffSet--
+            setYOffSet yOffSet
+          else
+            @focus ci + 2, rj + 2
+
+          @focus ci + 2, rj
+
 
   focus: (ci, ri) ->
     {key} = @attributes

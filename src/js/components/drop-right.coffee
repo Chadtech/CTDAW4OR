@@ -11,6 +11,8 @@ _        = require 'lodash'
 
 module.exports = DropRight = Himesama.createClass
 
+  needs: ['sheets']
+
   initAttributes: ->          dropped: false
   dropright:      -> @setAttr dropped: true
   close:          -> @setAttr dropped: false
@@ -27,6 +29,7 @@ module.exports = DropRight = Himesama.createClass
     {key}    = @attributes
     {sheets} = @state
     si       = @state[key]
+    s        = sheets[si]
     nr       = []
     l        = s[0].length
     w        = where

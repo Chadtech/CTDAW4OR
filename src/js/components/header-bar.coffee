@@ -7,7 +7,7 @@ _        = require 'lodash'
 
 # Components
 Open  = require './open-button'
-Save  = require './save-button'
+New   = require './new-button'
 Radix = require './radix-field'
 
 
@@ -17,7 +17,8 @@ module.exports = HeaderBar = Himesama.createClass
 
     div className: 'header-bar',
 
-      # Open()
+      Open()
+      New()
       # Save()
       Radix()
 

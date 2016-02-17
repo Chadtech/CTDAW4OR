@@ -24,6 +24,15 @@ module.exports = Himesama.createClass
     need        = [ tn ]
 
     div className: 'tracker',
-      Options payload
+      Options payload, need
       Sheets  payload, need
       Tracker payload, need
+
+
+
+
+
+
+
+
+      

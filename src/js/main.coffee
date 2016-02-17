@@ -12,13 +12,9 @@ HeaderBar   = require './components/header-bar'
 module.exports = Main = Himesama.createClass
 
   render: ->
-    { lefti, righti } = @state
 
-    div null,
-      # style:
-      #   margin: '0 auto'
-      #   width:  '50%'
-      #   height: '100%' 
+    div null, 
+
       HeaderBar null
       div className: 'container',
 

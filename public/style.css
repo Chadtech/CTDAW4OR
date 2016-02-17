@@ -5,6 +5,7 @@
 body {
   background: #040a0e;
   padding: 7px;
+  padding-bottom: 28px;
   margin: 0;
 }
 .point {
@@ -100,6 +101,9 @@ body {
   width: 50px;
   height: 14px;
 }
+.column.wide {
+  width: 105px;
+}
 .content {
   margin: 0;
   padding: 0;
@@ -125,7 +129,7 @@ body {
   margin-right: 1px;
 }
 .button {
-  background-color: #dd445d;
+  background-color: #836045;
   border-style: solid;
   border-width: 1px;
   border-color: #1a2129;
@@ -155,21 +159,21 @@ body {
   color: #1a2129;
 }
 .button.G {
-  background-color: #74bd52;
+  background-color: #61833e;
 }
 .button.G:hover {
   background-color: #c6b988;
   border-color: #c6b988;
 }
 .button.D {
-  background-color: #9a4e53;
+  background-color: importantTextD;
 }
 .button.D:hover {
   background-color: #c6b988;
   border-color: #c6b988;
 }
 .nullButton {
-  background-color: #dd445d;
+  background-color: #836045;
   border-style: solid;
   border-width: 1px;
   border-color: #1a2129;
@@ -188,6 +192,29 @@ body {
   margin: 0;
   background-color: #465244;
   color: #1a2129;
+}
+.nullButton.wide {
+  width: 109px;
+  background-color: #425250;
+}
+.nullButton.delete {
+  background-color: #836045;
+}
+.nullButton.delete.tiny {
+  width: 27px;
+}
+.nullButton.delete:hover {
+  background-color: #b76860;
+}
+.nullButton.add {
+  background-color: #61833e;
+}
+.nullButton.add:hover {
+  background-color: #91ae58;
+}
+.nullButton.add.tiny {
+  width: 27px;
+  margin-left: 27px;
 }
 .dropright {
   margin-top: -3px;
