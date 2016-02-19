@@ -15,8 +15,14 @@ initState
   rowRadix:    8
   lefti:       0
   righti:      0
-  xOffSet:     0
-  yOffSet:     0
+  offsets:
+    lefti:
+      x:       0
+      y:       0
+    righti:
+      x:       0
+      y:       0
+
 
 # Components
 Main = require './main'

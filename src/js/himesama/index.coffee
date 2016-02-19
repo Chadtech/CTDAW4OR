@@ -109,6 +109,19 @@ Himesama =
 
 
   dirtify: (node, basis) ->
+    # { needs, children } = node
+    # if needs? and basis in needs
+    #   node.dirty = true
+    #   _.forEach node.children, 
+    #     (child) ->
+    #       {type} = child
+    #       if type is 'custom'
+    #         child.dirty = true
+    # else
+    #   _.forEach children, 
+    #     (child, ci) =>
+    #       @dirtify child, basis
+          
     { needs, children } = node
     if needs? and basis in needs
       node.dirty = true
