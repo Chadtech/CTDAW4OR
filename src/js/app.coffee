@@ -19,9 +19,11 @@ initState
     lefti:
       x:   0
       y:   0
+      t:   0
     righti:
       x:   0
       y:   0
+      t:   0
 
 # Components
 Main = require './main'

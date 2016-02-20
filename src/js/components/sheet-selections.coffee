@@ -9,17 +9,17 @@ Himesama = require '../himesama'
 
 module.exports = Himesama.createClass
 
-  needs: [ 'titles', 'sheets' ]
+  needs: [ 'titles', 'sheets', 'offsets' ]
 
   setSheet: (event) ->
+    v = event.target
+    v = v.getAttribute 'sheet-i'
+
     { key }      = @attributes
     payload      = {}
-    v            = event.target
-    v            = v.getAttribute 'sheet-index'
     payload[key] = parseInt v
     @setAttr sheetIndex: v
     @setState payload
-
 
   getClass: (i) ->
     {key} = @attributes
@@ -28,31 +28,56 @@ module.exports = Himesama.createClass
       'selected-sheet-option'
     else 'sheet-option'
 
+  shiftRight: ->
+    {offsets} = @state
+    {titles}  = @state
+    { key }   = @attributes
+    { t }     = offsets[key]
+    l         = titles.length
+    offsets[key].t++ if t < l
+    @setState offsets: offsets
+
+  shiftLeft: ->
+    {offsets} = @state
+    {titles}  = @state
+    { key }   = @attributes
+    { t }     = offsets[key]
+    offsets[key].t-- if 0 < t
+    @setState offsets: offsets
+
 
   render: ->
-    { titles } = @state
+    {titles}  = @state
+    {offsets} = @state
+    { key }   = @attributes
+    t         = offsets[key].t
+    titles    = titles.slice t, t + 5
+
 
     sheetButtons = _.map titles, 
-      (name, i) =>
+      (title, i) =>
+        i += t
         input
-          className:  @getClass i
-          sheetIndex: i
-          type:       'submit'
-          event:      click: @setSheet
-          value:      name
+          className: @getClass i
+          sheetI:    i
+          type:      'submit'
+          event:     click: @setSheet
+          value:     title
     
 
-    div className:    'sheet-selections',
+    div className:   'sheet-selections',
 
       input
-        className:    'left-or-right-sheet'
-        type:         'submit'
-        value:        '<<'
+        className:   'left-or-right-sheet'
+        type:        'submit'
+        event:       click: @shiftLeft
+        value:       '<<'
 
       input
-        className:    'left-or-right-sheet'
-        type:         'submit'
-        value:        '>>'  
+        className:   'left-or-right-sheet'
+        type:        'submit'
+        event:       click: @shiftRight
+        value:       '>>'  
 
       sheetButtons
 
