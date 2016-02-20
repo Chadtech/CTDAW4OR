@@ -18,5 +18,5 @@ module.exports = Main = Himesama.createClass
       HeaderBar         null
       div className:    'container',
 
-        TrackerView tn: 'lefti'
-        TrackerView tn: 'righti'
+        TrackerView tn: 'left'
+        TrackerView tn: 'right'

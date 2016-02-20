@@ -13,14 +13,14 @@ initState
   sheets:  [ blankSheet ]
   titles:  [ 'blank-sheet 0' ]
   radix:   8
-  lefti:   0
-  righti:  0
+  left:    0
+  right:   0
   offsets:
-    lefti:
+    left:
       x:   0
       y:   0
       t:   0
-    righti:
+    right:
       x:   0
       y:   0
       t:   0

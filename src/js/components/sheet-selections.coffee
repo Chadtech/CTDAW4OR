@@ -53,7 +53,6 @@ module.exports = Himesama.createClass
     t         = offsets[key].t
     titles    = titles.slice t, t + 5
 
-
     sheetButtons = _.map titles, 
       (title, i) =>
         i += t

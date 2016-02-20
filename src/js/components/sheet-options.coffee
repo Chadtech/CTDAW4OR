@@ -21,6 +21,17 @@ module.exports = Himesama.createClass
     titles[si] = event.target.value
     @setState titles: titles
 
+  close: ->
+    { key }  = @attributes
+    si       = @state[key]
+    {titles} = @state
+    {sheets} = @state
+    titles.splice si, 1
+    sheets.splice si, 1
+    @setState 
+      sheets: sheets   
+      titles: titles
+
   save: ->
     dialog.showSaveDialog (fn) =>
       return unless fn?
