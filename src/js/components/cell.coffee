@@ -33,44 +33,6 @@ module.exports = Himesama.createClass
     ci          = ci % colB
     rj          = ri % rowB
 
-    # if event.metaKey
-
-    #   switch event.which
-
-    #     # Enter
-    #     when 13
-    #       if rj is rowB - 1
-    #         offsets[key].y++
-    #         @setState offsets: offsets
-    #       else
-    #         @focus ci + 2, rj + 2
-        
-    #     # Right Arrow
-    #     when 39
-    #       if ci < colB
-    #         @focus ci + 3, rj + 1
-        
-    #     # Down Arrow
-    #     when 40 
-    #       console.log 'A'
-
-        
-    #     # Left Arrow
-    #     when 37
-    #       if 0 < ci
-    #         @focus ci + 1, rj + 1
-        
-    #     # Up Arrow
-    #     when 38
-    #       if 9 < rj
-    #         if 0 < y and rj < 10
-    #           offsets[key].y -= 10
-    #           @setState offsets: offsets
-    #         else
-    #           @focus ci + 2, rj - 9
-
-    # else
-  
     switch event.which
 
       # Enter
