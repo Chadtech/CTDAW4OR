@@ -13,13 +13,13 @@ Cell           = require './cell'
 DeleteButton   = require './delete-button'
 AddButton      = require './add-button'
 
-colB           = 10
-rowB           = 25
+# Utilities
+bounds         = require '../boundaries'
 
 
 module.exports = Himesama.createClass
 
-  needs: [ 'sheets',  'rowRadix', 'offsets' ]
+  needs: [ 'sheets',  'radix', 'offsets' ]
 
   initAttributes: ->
     yOffSet: 0
@@ -53,12 +53,12 @@ module.exports = Himesama.createClass
           ci:           ci
 
     {offsets}  = @state
-    { x, y }   = offsets[key]
+    { y }      = offsets[key]
 
-    rows       = s.slice y, rowB + y
+    rows       = s.slice y, bounds.y + y
     rows       = _.map rows, (r, ri) =>
 
-      cells    = r.slice 0, colB
+      cells    = r.slice 0, bounds.x
       cells    = _.map cells, 
         (c, ci) =>
           column null,
@@ -67,7 +67,6 @@ module.exports = Himesama.createClass
               ri:       ri
               key:      key
               content:  c 
-
 
       row               null,
         column          null,
@@ -82,8 +81,6 @@ module.exports = Himesama.createClass
             key:        key
             ri:         ri
         cells
-
-
 
     div className:      'container',
       row               null, 

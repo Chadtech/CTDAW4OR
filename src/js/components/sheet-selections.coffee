@@ -9,20 +9,20 @@ Himesama = require '../himesama'
 
 module.exports = Himesama.createClass
 
-  needs: [ 'sheetNames', 'sheets' ]
+  needs: [ 'titles', 'sheets' ]
 
   setSheet: (event) ->
-    { tn, key }  = @attributes
-    payload = {}
-    v = event.target
-    v = v.getAttribute 'sheet-index'
-    payload[ key ] = parseInt v
+    { key }      = @attributes
+    payload      = {}
+    v            = event.target
+    v            = v.getAttribute 'sheet-index'
+    payload[key] = parseInt v
     @setAttr sheetIndex: v
     @setState payload
 
 
   getClass: (i) ->
-    { key } = @attributes
+    {key} = @attributes
     index = @state[key]
     if i is index 
       'selected-sheet-option'
@@ -30,9 +30,9 @@ module.exports = Himesama.createClass
 
 
   render: ->
-    { sheetNames } = @state
+    { titles } = @state
 
-    sheetButtons = _.map sheetNames, 
+    sheetButtons = _.map titles, 
       (name, i) =>
         input
           className:  @getClass i

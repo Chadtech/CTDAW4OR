@@ -15,7 +15,6 @@ module.exports = Himesama.createClass
     ri       += y + 1
     {sheets}  = @state
     si        = @state[key]
-    s         = sheets[si]
     nr        = []
     l         = s[0].length
     _.times l, (i) => nr.push ''
@@ -24,7 +23,7 @@ module.exports = Himesama.createClass
 
   render: ->
     input
-      className:      'nullButton add tiny'
-      type:           'submit'
-      event:          click: @handle
-      value:          'v'
+      className: 'nullButton add tiny'
+      type:      'submit'
+      event:     click: @handle
+      value:     'v'

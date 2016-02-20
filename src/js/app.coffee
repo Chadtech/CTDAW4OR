@@ -6,29 +6,28 @@ Himesama      = require './himesama'
 blankSheet    = (require './blank-sheet')()
 
 # DOM
-{ div } = Himesama.DOM
+{ div }       = Himesama.DOM
 
 # State
 initState 
-  sheets:      [ blankSheet ]
-  sheetNames:  [ 'blank-sheet 0' ]
-  rowRadix:    8
-  lefti:       0
-  righti:      0
+  sheets:  [ blankSheet ]
+  titles:  [ 'blank-sheet 0' ]
+  radix:   8
+  lefti:   0
+  righti:  0
   offsets:
     lefti:
-      x:       0
-      y:       0
+      x:   0
+      y:   0
     righti:
-      x:       0
-      y:       0
-
+      x:   0
+      y:   0
 
 # Components
 Main = require './main'
 
 
-App = Himesama.createClass
+App  = Himesama.createClass
 
   render: -> 
     div null,

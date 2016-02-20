@@ -23,11 +23,12 @@ options =
     'openDirectory'
   ]
 
+
 module.exports = Open = Himesama.createClass
 
   handle: ->
 
-    { sheets, sheetNames } = @state
+    { sheets, titles } = @state
 
     dialog.showOpenDialog options, (fns) =>
       return unless fns? 
@@ -40,14 +41,13 @@ module.exports = Open = Himesama.createClass
         _.map csv, (col) -> col.split ','
       sheets = sheets.concat openedSheets
       
-      fns  = _.map fns, (fn) -> 
-        fn = fn.slice 0, fn.length - 4
-        fn = justFile fn
-      sheetNames = sheetNames.concat fns
+      fns    = _.map fns, (fn) -> 
+        justFile fn.slice 0, fn.length - 4
+      titles = titles.concat fns
 
       @setState 
-        sheets:     sheets
-        sheetNames: sheetNames
+        sheets: sheets
+        titles: titles
 
 
   render: ->

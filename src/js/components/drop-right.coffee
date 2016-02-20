@@ -11,8 +11,6 @@ _        = require 'lodash'
 
 module.exports = DropRight = Himesama.createClass
 
-  needs: [ 'sheets' ]
-
   initAttributes: ->          dropped: false
   dropright:      -> @setAttr dropped: true
   close:          -> @setAttr dropped: false
@@ -49,9 +47,8 @@ module.exports = DropRight = Himesama.createClass
     @newRow ri + 1
 
   render: ->
-    { ri, dropped } = @attributes
 
-    if dropped
+    if @attributes.dropped
       div className:      'dropright',
         div className:    'list-right',
           div className:  'list-right-Item zero',
@@ -82,8 +79,10 @@ module.exports = DropRight = Himesama.createClass
               event:      click: @removeRow
               value:      'delete'
     else
-      radix = @state.rowRadix
-      index = indexFormatter ri, radix
+      {ri, key} = @attributes
+      { radix } = @state
+      ri       += @state.offsets[key].y
+      index     = indexFormatter ri, radix 
 
       input
         className:        'nullButton'

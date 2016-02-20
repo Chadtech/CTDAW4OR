@@ -8,16 +8,16 @@ _        = require 'lodash'
 
 module.exports = Radix = Himesama.createClass
 
-  needs: [ 'rowRadix' ]
+  needs: [ 'radix' ]
 
   handle: (event) ->
     rr = parseInt event.target.value
-    @setState rowRadix: rr if rr> 1
+    @setState radix: rr if rr> 1
 
   render: ->
 
-    radix = @state.rowRadix
-    radix = 'radix' unless radix
+    {radix} = @state
+    radix   = 'radix' unless radix
 
     input
       className:      'field'

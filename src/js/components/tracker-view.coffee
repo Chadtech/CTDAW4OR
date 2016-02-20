@@ -12,11 +12,11 @@ Sheets  = require './sheet-selections'
 Options = require './sheet-options'
 
 
-module.exports = Himesama.createClass
+module.exports  = Himesama.createClass
 
   render: ->
-    { tn } = @attributes
-    { ti } = @state[tn]
+    { tn }      = @attributes
+    { ti }      = @state[tn]
 
     payload     = {}
     payload[tn] = ti

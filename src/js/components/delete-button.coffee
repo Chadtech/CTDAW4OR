@@ -20,7 +20,7 @@ module.exports = Himesama.createClass
 
   render: ->
     input
-      className:      'nullButton delete tiny'
-      type:           'submit'
-      event:          click: @handle
-      value:          'X'
+      className: 'nullButton delete tiny'
+      type:      'submit'
+      event:     click: @handle
+      value:     'X'

@@ -8,7 +8,7 @@ Himesama = require '../himesama'
 
 module.exports = DropDown = Himesama.createClass
 
-  needs: ['sheets']
+  needs: [ 'sheets' ]
 
   initAttributes: ->          dropped: false
   dropdown:       -> @setAttr dropped: true

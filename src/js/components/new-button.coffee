@@ -7,6 +7,7 @@ dialog   = remote.require 'dialog'
 
 # Utilities
 { isCSV, getDir } = require '../utilities'
+blankSheet        = require '../blank-sheet'
 
 # DOM
 { div, input } = Himesama.DOM
@@ -16,16 +17,16 @@ module.exports = New = Himesama.createClass
 
 
   handle: ->
-    { sheets, sheetNames } = @state
-    newSheet = (require '../blank-sheet')()
+    { sheets, titles } = @state
+    newSheet = blankSheet()
     sheets.push newSheet   
     i = 0
     n = 'blank-sheet '
-    i++ while (n + i) in sheetNames
-    sheetNames.push n + i
+    i++ while (n + i) in titles
+    titles.push n + i
     @setState
-      sheetNames: sheetNames
-      sheets:     sheets
+      titles: titles
+      sheets: sheets
 
 
   render: ->

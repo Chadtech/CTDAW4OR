@@ -12,24 +12,24 @@ dialog   = remote.require 'dialog'
 
 module.exports = Himesama.createClass
 
-  needs: ['sheetNames']
+  needs: [ 'titles' ]
 
   handle: (event) ->
-    { sheetNames } = @state
-    { key }        = @attributes
-    si             = @state[key]
-    sheetNames[si] = event.target.value
-    @setState sheetNames: sheetNames
+    { titles } = @state
+    { key }    = @attributes
+    si         = @state[key]
+    titles[si] = event.target.value
+    @setState titles: titles
 
   save: ->
-    dialog.showSaveDialog (dir) =>
-      return unless dir?
+    dialog.showSaveDialog (fn) =>
+      return unless fn?
 
-      {sheetNames} = @state
-      { key }      = @attributes
-      si           = @state[key]
-      sheets       = @state.sheets
-      sheet        = sheets[si]
+      {titles} = @state
+      { key }  = @attributes
+      si       = @state[key]
+      sheets   = @state.sheets
+      sheet    = sheets[si]
 
       sheet = _.reduce sheet, 
         (str, row) -> 
@@ -42,16 +42,16 @@ module.exports = Himesama.createClass
       sheet = sheet.split ''
       sheet.pop()
       sheet = sheet.join ''
-      name  = sheetNames[si]
+      name  = titles[si]
       name += '.csv'
       fs.writeFileSync name, sheet
 
 
   render: ->
-    {sheetNames} = @state
-    { key }      = @attributes
-    si           = @state[key]
-    name         = sheetNames[si]
+    {titles} = @state
+    { key }  = @attributes
+    si       = @state[key]
+    title    = titles[si]
 
     div className:      'sheet-selections',
 
@@ -59,7 +59,7 @@ module.exports = Himesama.createClass
         className:      'field'
         placeholder:    'sheet name'
         event:          input: @handle
-        value:          name
+        value:          title
 
       input
         className:      'left-or-right-sheet save'
