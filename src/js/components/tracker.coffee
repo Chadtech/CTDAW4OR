@@ -13,10 +13,9 @@ Cell           = require './cell'
 DeleteButton   = require './delete-button'
 AddButton      = require './add-button'
 
-# { colB, rowB } = require '../boundaries'
+colB           = 10
+rowB           = 25
 
-colB = 10
-rowB = 25
 
 module.exports = Himesama.createClass
 

@@ -19,6 +19,5 @@ module.exports = HeaderBar = Himesama.createClass
 
       Open()
       New()
-      # Save()
       Radix()
 

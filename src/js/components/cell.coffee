@@ -5,14 +5,11 @@ Himesama = require '../himesama'
 # DOM
 { div, p, input } = Himesama.DOM
 
-# { colB, rowB } = require '../boundaries'
-
 colB = 10
 rowB = 25
 
-module.exports = Himesama.createClass
 
-  # needs: ['offsets']
+module.exports = Himesama.createClass
 
   handle: (event) ->
     {ci,ri,key} = @attributes

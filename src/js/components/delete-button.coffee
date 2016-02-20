@@ -9,9 +9,12 @@ Himesama = require '../himesama'
 module.exports = Himesama.createClass
 
   handle: ->
-    {ri,key} = @attributes
-    {sheets} = @state
-    si       = @state[key]
+    {ri,key}  = @attributes
+    {sheets}  = @state
+    {offsets} = @state
+    { x, y }  = offsets[key]
+    ri       += y
+    si        = @state[key]
     sheets[si].splice ri, 1
     @setState sheets: sheets
 
