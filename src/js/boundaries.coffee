@@ -1,1 +1,1 @@
-module.exports = x: 10, y: 25
+module.exports = x: 10, y: 58

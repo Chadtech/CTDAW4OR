@@ -86,7 +86,7 @@ module.exports  = Himesama.createClass
   focus: (ci, ri) ->
     {key}   = @attributes
     tracker = 0
-    tracker = 1 if key is 'righti'
+    tracker = 1 if key is 'right'
     qs      = '[himesama-id="0.0.1.'
     qs     += tracker + '.2.' + ri
     qs     += '.' + ci + '.0"]'
