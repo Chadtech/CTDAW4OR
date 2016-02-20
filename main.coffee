@@ -2,12 +2,7 @@ electron      = require 'electron'
 app           = electron.app
 BrowserWindow = electron.BrowserWindow
 
-
 mainWindow = undefined
-
-app.on 'window-all-closed', ->
-  if process.platform isnt darwin
-    app.quit()
 
 app.on 'ready', ->
   mainWindow = new BrowserWindow (width: 800, height: 600)

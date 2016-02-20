@@ -1,6 +1,6 @@
 # Dependencies
-_        = require 'lodash'
-Himesama = require '../himesama'
+_               = require 'lodash'
+Himesama        = require '../himesama'
 
 # DOM
 {div, p, input} = Himesama.DOM
@@ -14,12 +14,15 @@ module.exports  = Himesama.createClass
   handle: (event) ->
     {ci,ri,key} = @attributes
     { offsets } = @state
-    ri         += offsets[key].y
-    ci         += offsets[key].x
-    si          = @state[key]
     { sheets }  = @state
-    v           = event.target.value
-    sheets[si][ri][ci] = v
+    offset      = offsets[key]
+
+    r = offset.y + ri
+    c = offset.x + ci
+    i = @state[key]
+    v = event.target.value
+
+    sheets[i][r][c] = v
     @setState sheets: sheets
 
   focusOn: (event) ->
