@@ -98,6 +98,8 @@ module.exports  = Himesama.createClass
 
 
   render: ->
+    # console.log @attributes
+
     {content}  = @attributes
     className  = 'cell'
     className += ' filled' if content

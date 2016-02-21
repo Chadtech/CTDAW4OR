@@ -65,6 +65,7 @@ module.exports = Himesama.createClass
             Cell
               ci:       ci
               ri:       ri
+              si:       si
               key:      key
               content:  c 
 

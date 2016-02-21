@@ -50,9 +50,10 @@ module.exports = Merge = (model, draft) ->
   else
     draft = adoptId model, draft
     unless Diff.nodes model, draft
-      Render.node model, draft
+      # Render.node model, draft
       model.attributes = draft.attributes
       model.type       = draft.type
+      Render.node model, draft
     mergeChildren model, draft
 
 
@@ -80,7 +81,6 @@ mergeChildren = (model, draft) ->
     _.times s - f, (si) =>
       dChild   = dChildren[ si + f ]
       dChild.parent = model
-      dChild
       id       = model.attributes[hk]
       childsId = id + '.' + (si + f)
       allocateIds dChild, childsId

@@ -18,7 +18,7 @@ module.exports = Render =
     id       = model.attributes[hk]
     el       = getByAttribute hk, id
     children = _.toArray el.children
-    nEl = _.reduce children, 
+    nEl      = _.reduce children, 
       (nEl, child) ->
         nEl.appendChild child
         nEl
@@ -63,8 +63,8 @@ module.exports = Render =
       el.textContent = child.content
     else
       child = HTMLify child
-      id = model.attributes[hk]
-      el = getByAttribute hk, id
+      id    = model.attributes[hk]
+      el    = getByAttribute hk, id
       el.appendChild child
 
 

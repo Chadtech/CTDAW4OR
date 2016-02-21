@@ -9,6 +9,9 @@ dialog   = remote.require 'dialog'
 { div, p, input } = Himesama.DOM
 { row, column }   = require './ct-dom'
 
+# Utilities
+{ getDir } = require '../utilities'
+
 
 module.exports = Himesama.createClass
 
@@ -53,8 +56,10 @@ module.exports = Himesama.createClass
       sheet = sheet.split ''
       sheet.pop()
       sheet = sheet.join ''
+      fn    = getDir fn
       name  = titles[si]
       name += '.csv'
+      name  = fn + '/' + name
       fs.writeFileSync name, sheet
 
 

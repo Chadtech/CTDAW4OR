@@ -120,6 +120,10 @@ Himesama =
       itsChild     = node.children[0]
       draft.index  = itsChild.index
       draft.parent = itsChild.parent
+      # _.forEach (_.keys draft.attributes),
+      #   (k) =>
+      #     node.attributes[k] = draft.attributes[k]
+      # node.attributes = draft.attributes
       @saveActiveText()
       Merge node, draft
       @loadActiveText()
