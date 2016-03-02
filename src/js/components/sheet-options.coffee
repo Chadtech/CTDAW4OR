@@ -36,9 +36,9 @@ module.exports = Himesama.createClass
       titles: titles
 
   save: ->
-    dialog.showSaveDialog (fn) =>
-      return unless fn?
+    {saveDir} = @state
 
+    writeFile = (dir) =>
       {titles} = @state
       { key }  = @attributes
       si       = @state[key]
@@ -53,14 +53,24 @@ module.exports = Himesama.createClass
           str + row + '\n'
         ''
 
+      {saveDir} = @state
       sheet = sheet.split ''
       sheet.pop()
       sheet = sheet.join ''
-      fn    = getDir fn
       name  = titles[si]
       name += '.csv'
-      name  = fn + '/' + name
+      name  = dir + '/' + name
       fs.writeFileSync name, sheet
+
+    if saveDir.length
+      writeFile saveDir
+    else
+      dialog.showSaveDialog (fn) =>
+        return unless fn?
+        fn = getDir fn
+        @setState saveDir: fn
+        writeFile fn
+
 
 
   render: ->

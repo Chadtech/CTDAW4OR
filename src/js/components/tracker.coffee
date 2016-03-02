@@ -26,13 +26,12 @@ module.exports = Himesama.createClass
     xOffSet: 0
 
   addRow: ->
-    { key }    = @attributes
-    { sheets } = @state
-    si         = @state[key]
-    s          = sheets[si]
-    l          = s[0].length
-    nr         = []
-    _.times l, (i) => nr.push ''
+    { key }  = @attributes
+    {sheets} = @state
+    si       = @state[key]
+    s        = sheets[si]
+    l        = s[0].length
+    nr       = _.times l, -> ''
     sheets[si].unshift nr
     @setState sheets: sheets
 
@@ -44,13 +43,13 @@ module.exports = Himesama.createClass
     si         = @state[key]
     s          = sheets[si]
     l          = s[0].length
-    columns    = []
     t          = Math.min l, 10
-    _.times t, (ci) =>
-      columns.push column null,
-        DropDown 
-          key:          key
-          ci:           ci
+    columns    = _.times t, 
+      (ci) =>
+        column null,
+          DropDown 
+            key: key
+            ci:  ci
 
     {offsets}  = @state
     { y }      = offsets[key]

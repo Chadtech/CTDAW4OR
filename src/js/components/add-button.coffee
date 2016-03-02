@@ -15,9 +15,9 @@ module.exports = Himesama.createClass
     ri       += y + 1
     {sheets}  = @state
     si        = @state[key]
-    nr        = []
-    l         = s[0].length
-    _.times l, (i) => nr.push ''
+    {length}  = sheets[si][0]
+    nr        = _.times length, 
+      -> '' 
     sheets[si].splice ri, 0, nr
     @setState sheets: sheets
 

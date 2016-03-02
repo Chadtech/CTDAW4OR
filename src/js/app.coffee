@@ -24,6 +24,7 @@ initState
       x:   0
       y:   0
       t:   0
+  saveDir: ''
 
 # Components
 Main = require './main'
