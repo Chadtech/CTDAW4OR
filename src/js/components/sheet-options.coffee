@@ -62,6 +62,7 @@ module.exports = Himesama.createClass
       name  = dir + '/' + name
       fs.writeFileSync name, sheet
 
+
     if saveDir.length
       writeFile saveDir
     else
@@ -70,7 +71,6 @@ module.exports = Himesama.createClass
         fn = getDir fn
         @setState saveDir: fn
         writeFile fn
-
 
 
   render: ->
